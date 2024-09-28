@@ -15,6 +15,7 @@ const App = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [explanation, setExplanation] = useState(null);
   const [isDisabled, setIsDisabled] = useState(true);
+  const [nextQuestionTimer, setNextQuestionTimer] = useState(null);
 
   useEffect(() => {
     if (codeRef.current) {
@@ -26,7 +27,20 @@ const App = () => {
     setIsSubmitted(false);
     setExplanation(null);
     setIsDisabled(true);
+    setNextQuestionTimer(null);
   }, [selectedQuestion]);
+
+  useEffect(() => {
+    let timer;
+    if (nextQuestionTimer !== null && nextQuestionTimer > 0) {
+      timer = setTimeout(() => {
+        setNextQuestionTimer(nextQuestionTimer - 1);
+      }, 1000);
+    } else if (nextQuestionTimer === 0) {
+      setSelectedQuestion((prev) => Math.min(prev + 1, questions.length - 1));
+    }
+    return () => clearTimeout(timer);
+  }, [nextQuestionTimer, questions.length]);
 
   function handleSubmit() {
     const currentQuestion = questions[selectedQuestion];
@@ -36,9 +50,7 @@ const App = () => {
     setExplanation(currentQuestion.explanation);
 
     if (isCorrect) {
-      setTimeout(() => {
-        setSelectedQuestion(selectedQuestion + 1);
-      }, 2000);
+      setNextQuestionTimer(5);
     }
   }
 
@@ -137,7 +149,14 @@ const App = () => {
 
           {/* Question selection column */}
           <div className="w-full md:w-1/4 md:pl-4 md:border-l md:border-gray-200 md:max-h-screen">
-            <h3 className="text-xl font-semibold mb-4">Questions</h3>
+            <div className="flex flex-row justify-between items-center mb-4">
+              <h3 className="text-xl font-semibold">Questions</h3>
+              {nextQuestionTimer !== null && (
+                <div className="text-sm font-medium">
+                  Next Question: {nextQuestionTimer}s
+                </div>
+              )}
+            </div>
             <div className="flex flex-wrap gap-2 overflow-y-auto max-h-[calc(100vh-120px)] justify-center">
               {questions.map((question, index) => (
                 <button

@@ -34,7 +34,10 @@ const Explanation = ({ isSubmitted, explanation, isCorrect }) => {
           {isCorrect ? "Correct!" : "Incorrect"}
         </span>
       </div>
-      <p className={textColor}>{explanation}</p>
+      <p
+        className={textColor}
+        dangerouslySetInnerHTML={{ __html: explanation }}
+      ></p>
     </div>
   );
 };
