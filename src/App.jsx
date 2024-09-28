@@ -34,6 +34,12 @@ const App = () => {
     setAnswer(isCorrect);
     setIsSubmitted(true);
     setExplanation(currentQuestion.explanation);
+
+    if (isCorrect) {
+      setTimeout(() => {
+        setSelectedQuestion(selectedQuestion + 1);
+      }, 2000);
+    }
   }
 
   return (
