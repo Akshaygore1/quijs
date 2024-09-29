@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const Explanation = ({ isSubmitted, explanation, isCorrect }) => {
+const Explanation = ({ isSubmitted, explanation, isCorrect, answer }) => {
   if (!isSubmitted || !explanation) {
     return null;
   }
@@ -34,10 +34,13 @@ const Explanation = ({ isSubmitted, explanation, isCorrect }) => {
           {isCorrect ? "Correct!" : "Incorrect"}
         </span>
       </div>
-      <p
-        className={textColor}
-        dangerouslySetInnerHTML={{ __html: explanation }}
-      ></p>
+      <div>
+        <div className={textColor}>Correct Answer : {answer}</div>
+        <p
+          className={textColor}
+          dangerouslySetInnerHTML={{ __html: explanation }}
+        ></p>
+      </div>
     </div>
   );
 };
@@ -46,6 +49,7 @@ Explanation.propTypes = {
   isSubmitted: PropTypes.bool.isRequired,
   explanation: PropTypes.string.isRequired,
   isCorrect: PropTypes.bool.isRequired,
+  answer: PropTypes.string.isRequired,
 };
 
 export default Explanation;

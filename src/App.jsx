@@ -50,7 +50,7 @@ const App = () => {
     setExplanation(currentQuestion.explanation);
 
     if (isCorrect) {
-      setNextQuestionTimer(5);
+      setNextQuestionTimer(10);
     }
   }
 
@@ -123,6 +123,7 @@ const App = () => {
                       isSubmitted={isSubmitted}
                       explanation={explanation}
                       isCorrect={answer}
+                      answer={questions[selectedQuestion].correctAnswer}
                     />
                   </div>
                   <div>
