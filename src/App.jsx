@@ -117,16 +117,8 @@ const App = () => {
                     )
                   )}
                 </div>
-                <div className="mt-4 flex flex-row justify-end gap-4">
-                  <div>
-                    <Explanation
-                      isSubmitted={isSubmitted}
-                      explanation={explanation}
-                      isCorrect={answer}
-                      answer={questions[selectedQuestion].correctAnswer}
-                    />
-                  </div>
-                  <div>
+                <div className="mt-4 flex flex-col  gap-4">
+                  <div className="flex justify-end">
                     <button
                       className={`bg-black text-white rounded-md p-2 transition-colors duration-200 ${
                         isDisabled
@@ -138,6 +130,14 @@ const App = () => {
                     >
                       Submit
                     </button>
+                  </div>
+                  <div>
+                    <Explanation
+                      isSubmitted={isSubmitted}
+                      explanation={explanation}
+                      isCorrect={answer}
+                      answer={questions[selectedQuestion].correctAnswer}
+                    />
                   </div>
                 </div>
               </div>
