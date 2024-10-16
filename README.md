@@ -1,8 +1,16 @@
-# React + Vite
+# Vercel Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A self-hosted deployment platform inspired by Vercel, built with Node.js, Docker, Cloudflare R2, and React. This system allows you to build and deploy web applications with automated build processes and asset delivery.
 
-Currently, two official plugins are available:
+## Here is Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+https://github.com/user-attachments/assets/8c3aa809-d513-40de-b939-19ef1df4573a
+
+
+
+
+
+
+
+
+
